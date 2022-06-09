@@ -59,7 +59,6 @@ pipeline {
       }
       steps {
         ansiColor('xterm') {
-          //container("jenkins-agent") {
             withCredentials([[
               $class: 'AmazonWebServicesCredentialsBinding',
               credentialsId: "${CFN_CREDENTIALS_ID}",
@@ -67,7 +66,6 @@ pipeline {
               secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                 sh 'deploy-stack.sh ${STACK_NAME} ${PARAMETERS_FILE_NAME} ${TEMPLATE_NAME} ${CHANGESET_MODE} ${REGION}'
             }
-          }
         }
       }
     }
@@ -78,7 +76,6 @@ pipeline {
       }
       steps {
         ansiColor('xterm') {
-         // container("jenkins-agent") {
             withCredentials([[
               $class: 'AmazonWebServicesCredentialsBinding',
               credentialsId: "${CFN_CREDENTIALS_ID}",
@@ -86,7 +83,6 @@ pipeline {
               secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                 sh 'deploy-stack.sh ${STACK_NAME} ${PARAMETERS_FILE_NAME} ${TEMPLATE_NAME} ${CHANGESET_MODE} ${REGION}'
             }
-          }
         }
       }
     }
@@ -97,15 +93,13 @@ pipeline {
       }
       steps {
         ansiColor('xterm') {
-         // container("jenkins-agent") {
-            withCredentials([[
+			withCredentials([[
               $class: 'AmazonWebServicesCredentialsBinding',
               credentialsId: "${CFN_CREDENTIALS_ID}",
               accessKeyVariable: 'AWS_ACCESS_KEY_ID',
               secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                 sh 'delete-stack.sh ${STACK_NAME} ${REGION}'
             }
-          }
         }
       }
     }
