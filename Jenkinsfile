@@ -59,7 +59,7 @@ pipeline {
       }
       steps {
         ansiColor('xterm') {
-          container("jenkins-agent") {
+          //container("jenkins-agent") {
             withCredentials([[
               $class: 'AmazonWebServicesCredentialsBinding',
               credentialsId: "${CFN_CREDENTIALS_ID}",
@@ -78,7 +78,7 @@ pipeline {
       }
       steps {
         ansiColor('xterm') {
-          container("jenkins-agent") {
+          //container("jenkins-agent") {
             withCredentials([[
               $class: 'AmazonWebServicesCredentialsBinding',
               credentialsId: "${CFN_CREDENTIALS_ID}",
@@ -97,7 +97,7 @@ pipeline {
       }
       steps {
         ansiColor('xterm') {
-          container("jenkins-agent") {
+         // container("jenkins-agent") {
             withCredentials([[
               $class: 'AmazonWebServicesCredentialsBinding',
               credentialsId: "${CFN_CREDENTIALS_ID}",
